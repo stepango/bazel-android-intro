@@ -16,13 +16,13 @@
 
 package com.example.android.mediarecorder;
 
+import android.support.annotation.NonNull;
 import android.app.Activity;
 import android.content.pm.PackageManager;
 import android.hardware.Camera;
 import android.media.CamcorderProfile;
 import android.media.MediaRecorder;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.TextureView;
@@ -60,23 +60,17 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sample_main);
 
-        mPreview = (TextureView) findViewById(R.id.surface_view);
-        captureButton = (Button) findViewById(R.id.button_capture);
-        if (Build.VERSION.SDK_INT >= 23) {
-            requestPermissions(new String[]{
-                android.Manifest.permission.CAMERA,
-                android.Manifest.permission.RECORD_AUDIO,
-                android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, PERMISSION_CODE);
-        } else {
-            cameraPermission = true;
-            microphonePermission = true;
-            storagePermission = true;
-        }
+        mPreview = findViewById(R.id.surface_view);
+        captureButton = findViewById(R.id.button_capture);
+        requestPermissions(new String[]{
+            android.Manifest.permission.CAMERA,
+            android.Manifest.permission.RECORD_AUDIO,
+            android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, PERMISSION_CODE);
     }
 
     @Override
     public void onRequestPermissionsResult(
-            int requestCode, String[] permissions, int[] grantResults) {
+            int requestCode, @NonNull String[] permissions, int[] grantResults) {
         if (grantResults.length != 3 || requestCode != PERMISSION_CODE) {
             return;
         }

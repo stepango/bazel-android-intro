@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.system.id="Blaze" type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="android" name="Android">
+      <configuration>
+        <option name="ALLOW_USER_CONFIGURATION" value="false" />
+        <option name="MANIFEST_FILE_RELATIVE_PATH" value="" />
+        <option name="RES_FOLDER_RELATIVE_PATH" value="" />
+        <option name="RES_FOLDERS_RELATIVE_PATH" value="" />
+        <option name="TEST_RES_FOLDERS_RELATIVE_PATH" value="" />
+        <option name="ASSETS_FOLDER_RELATIVE_PATH" value="" />
+        <option name="PROJECT_TYPE" value="1" />
+        <option name="ENABLE_SOURCES_AUTOGENERATION" value="false" />
+      </configuration>
+    </facet>
+  </component>
+  <component name="NewModuleRootManager">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../../..">
+      <sourceFolder url="file://$MODULE_DIR$/../../../mediarecorder/java" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/../.." />
+      <excludeFolder url="file://$MODULE_DIR$/../../../bazel-bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../bazel-genfiles" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../bazel-out" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../bazel-solution" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../bazel-testlogs" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="java_compiler_362444fa" level="project" />
+    <orderEntry type="library" name="jdk_compiler_362444fa" level="project" />
+    <orderEntry type="library" name="javac-9+181-r4173-1_362444fa" level="project" />
+    <orderEntry type="library" name="support-annotations-28.0.0_47af8c11" level="project" />
+    <orderEntry type="module" module-name="mediarecorder.java.com.example.android.mediarecorder.main" exported="" />
+  </component>
+</module>

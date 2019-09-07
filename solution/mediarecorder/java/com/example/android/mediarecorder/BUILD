@@ -7,6 +7,7 @@ android_library(
     resource_files = glob(["res/**"]),
     deps = [
         "//mediarecorder/java/com/example/android/common/media",
+        "@maven//:com_android_support_support_annotations"
     ],
 )
 
