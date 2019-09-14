@@ -18,6 +18,7 @@ package com.example.android.common.media;
 
 import android.annotation.TargetApi;
 import android.hardware.Camera;
+import android.icu.util.Calendar;
 import android.os.Build;
 import android.os.Environment;
 import android.util.Log;
@@ -67,9 +68,6 @@ public class CameraHelper {
         // minimum difference between view and camera height.
         double minDiff = Double.MAX_VALUE;
 
-        // Target view height
-        int targetHeight = h;
-
         // Try to find a video size that matches aspect ratio and the target view size.
         // Iterate over all available sizes and pick the largest size that can fit in the view and
         // still maintain the aspect ratio.
@@ -77,9 +75,9 @@ public class CameraHelper {
             double ratio = (double) size.width / size.height;
             if (Math.abs(ratio - targetRatio) > ASPECT_TOLERANCE)
                 continue;
-            if (Math.abs(size.height - targetHeight) < minDiff && previewSizes.contains(size)) {
+            if (Math.abs(size.height - h) < minDiff && previewSizes.contains(size)) {
                 optimalSize = size;
-                minDiff = Math.abs(size.height - targetHeight);
+                minDiff = Math.abs(size.height - h);
             }
         }
 
@@ -87,9 +85,9 @@ public class CameraHelper {
         if (optimalSize == null) {
             minDiff = Double.MAX_VALUE;
             for (Camera.Size size : videoSizes) {
-                if (Math.abs(size.height - targetHeight) < minDiff && previewSizes.contains(size)) {
+                if (Math.abs(size.height - h) < minDiff && previewSizes.contains(size)) {
                     optimalSize = size;
-                    minDiff = Math.abs(size.height - targetHeight);
+                    minDiff = Math.abs(size.height - h);
                 }
             }
         }
@@ -173,7 +171,7 @@ public class CameraHelper {
         }
 
         // Create a media file name
-        String timeStamp = new SimpleDateFormat("yyyy-MM-dd_HHmmss", Locale.US).format(new Date());
+        String timeStamp = new SimpleDateFormat("yyyy-MM-dd_HHmmss", Locale.US).format(Calendar.getInstance());
         File mediaFile;
         if (type == MEDIA_TYPE_IMAGE){
             mediaFile = new File(mediaStorageDir.getPath() + File.separator +

@@ -34,6 +34,8 @@ import com.example.android.common.media.CameraHelper;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.function.BooleanSupplier;
+import java.util.function.Function;
 
 /**
  *  This activity uses the camera/camcorder as the A/V source for the {@link android.media.MediaRecorder} API.
@@ -229,14 +231,19 @@ public class MainActivity extends Activity {
         return true;
     }
 
+    static class MediaPrepareTaskParams {
+        public MediaPrepareTaskParams() {
+        }
+    }
+
     /**
      * Asynchronous task for preparing the {@link android.media.MediaRecorder} since it's a long blocking
      * operation.
      */
-    class MediaPrepareTask extends AsyncTask<Void, Void, Boolean> {
+    class MediaPrepareTask extends AsyncTask<MediaPrepareTaskParams, Void, Boolean> {
 
         @Override
-        protected Boolean doInBackground(Void... voids) {
+        protected Boolean doInBackground(MediaPrepareTaskParams... params) {
             // initialize video camera
             if (prepareVideoRecorder()) {
                 // Camera is available and unlocked, MediaRecorder is prepared,

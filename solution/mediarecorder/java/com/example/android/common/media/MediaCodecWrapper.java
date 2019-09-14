@@ -339,15 +339,9 @@ public class MediaCodecWrapper {
                     break;
                 case MediaCodec.INFO_OUTPUT_FORMAT_CHANGED:
                     if (mOutputFormatChangedListener != null) {
-                        mHandler.post(new Runnable() {
-                            @Override
-                            public void run() {
-                                mOutputFormatChangedListener
-                                        .outputFormatChanged(MediaCodecWrapper.this,
-                                                mDecoder.getOutputFormat());
-
-                            }
-                        });
+                        mHandler.post(() -> mOutputFormatChangedListener
+                                .outputFormatChanged(MediaCodecWrapper.this,
+                                        mDecoder.getOutputFormat()));
                     }
                     break;
                 default:
