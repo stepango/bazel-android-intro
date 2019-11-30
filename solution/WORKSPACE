@@ -7,14 +7,14 @@ http_archive(
     strip_prefix = "rules_android-0.1.1",
 )
 
-# Configure Android SDK Path
+# Configure Android SDK
 load("@build_bazel_rules_android//android:rules.bzl", "android_sdk_repository")
 android_sdk_repository(
     name = "androidsdk",
 )
 
-RULES_JVM_EXTERNAL_TAG = "2.7"
-RULES_JVM_EXTERNAL_SHA = "f04b1466a00a2845106801e0c5cec96841f49ea4e7d1df88dc8e4bf31523df74"
+RULES_JVM_EXTERNAL_TAG = "2.10"
+RULES_JVM_EXTERNAL_SHA = "1bbf2e48d07686707dd85357e9a94da775e1dbd7c464272b3664283c9c716d26"
 
 http_archive(
     name = "rules_jvm_external",
@@ -27,7 +27,8 @@ load("@rules_jvm_external//:defs.bzl", "maven_install")
 
 maven_install(
     artifacts = [
-        "com.android.support:support-annotations:28.0.0"
+        "com.android.support:support-annotations:28.0.0",
+        "io.reactivex.rxjava2:rxjava:2.2.12"
     ],
     repositories = [
         "https://jcenter.bintray.com/",
@@ -35,3 +36,19 @@ maven_install(
         "https://repo1.maven.org/maven2",
     ],
 )
+
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+
+rules_kotlin_version = "legacy-1.3.0-rc1"
+rules_kotlin_sha = "9de078258235ea48021830b1669bbbb678d7c3bdffd3435f4c0817c921a88e42"
+http_archive(
+    name = "io_bazel_rules_kotlin",
+    urls = ["https://github.com/bazelbuild/rules_kotlin/archive/%s.zip" % rules_kotlin_version],
+    type = "zip",
+    strip_prefix = "rules_kotlin-%s" % rules_kotlin_version,
+    sha256 = rules_kotlin_sha,
+)
+
+load("@io_bazel_rules_kotlin//kotlin:kotlin.bzl", "kotlin_repositories", "kt_register_toolchains")
+kotlin_repositories() # if you want the default. Otherwise see custom kotlinc distribution below
+kt_register_toolchains() # to use the default toolchain, otherwise see toolchains below

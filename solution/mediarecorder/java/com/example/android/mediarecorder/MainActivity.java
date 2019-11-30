@@ -30,12 +30,14 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.android.common.media.CameraHelper;
+import com.example.android.utils.android.ContextKt;
+import com.example.android.utils.jvm.RxKt;
+import io.reactivex.Observable;
+import io.reactivex.disposables.CompositeDisposable;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
-import java.util.function.BooleanSupplier;
-import java.util.function.Function;
 
 /**
  *  This activity uses the camera/camcorder as the A/V source for the {@link android.media.MediaRecorder} API.
@@ -61,6 +63,9 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sample_main);
+
+        Log.d("Kotlin test", ContextKt.localization(this).invoke(R.string.app_name));
+        RxKt.plus(new CompositeDisposable(), Observable.just("").subscribe());
 
         mPreview = findViewById(R.id.surface_view);
         captureButton = findViewById(R.id.button_capture);
