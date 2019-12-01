@@ -30,6 +30,8 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.android.common.media.CameraHelper;
+import com.example.android.dagger.DaggerAppComponent;
+import com.example.android.dagger.InfoHolder;
 import com.example.android.utils.android.ContextKt;
 import com.example.android.utils.jvm.RxKt;
 import io.reactivex.Observable;
@@ -59,12 +61,17 @@ public class MainActivity extends Activity {
     private static final String TAG = "Recorder";
     private Button captureButton;
 
+    private InfoHolder infoHolder = new InfoHolder();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        DaggerAppComponent.create().inject(infoHolder);
         setContentView(R.layout.sample_main);
 
         Log.d("Kotlin test", ContextKt.localization(this).invoke(R.string.app_name));
+        Log.d("Kotlin dagger test", infoHolder.info.getName());
+
         RxKt.plus(new CompositeDisposable(), Observable.just("").subscribe());
 
         mPreview = findViewById(R.id.surface_view);
