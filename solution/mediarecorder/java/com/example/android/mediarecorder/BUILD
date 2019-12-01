@@ -20,4 +20,9 @@ android_binary(
     name = "mediarecorder",
     manifest = "AndroidManifest.xml",
     deps = [":main"],
+    crunch_png = False,
+    shrink_resources = 1,
+    proguard_specs = [
+        "proguard-rules.pro"
+    ]
 )
