@@ -7,6 +7,14 @@ java_library(
     visibility = ["//visibility:private"]
 )
 
+java_library(
+    name = "javax_inject",
+    exports = [
+        "@maven//:javax_inject_javax_inject",
+    ],
+    visibility = ["//visibility:public"]
+)
+
 java_plugin(
     name = "plugin",
     processor_class = "dagger.internal.codegen.ComponentProcessor",

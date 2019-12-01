@@ -1,7 +1,7 @@
 load("@io_bazel_rules_kotlin//kotlin:kotlin.bzl", "kt_android_library", "kt_jvm_library")
 
 kt_jvm_library(
-    name = "jvm_utils",
+    name = "jvm",
     srcs = glob([
         "jvm/*.kt",
     ]),
@@ -12,7 +12,7 @@ kt_jvm_library(
 )
 
 kt_android_library(
-    name = "android_utils",
+    name = "android",
     srcs = glob([
         "android/*.kt"
     ]),
