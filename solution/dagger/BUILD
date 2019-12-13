@@ -1,17 +1,6 @@
-java_library(
-    name = "compiler",
-    exports = [
-        "@maven//:com_google_dagger_dagger_compiler",
-    ],
-    neverlink = True, # We have to prevent compiler to be linked to final APK
-    visibility = ["//visibility:private"]
-)
-
-java_library(
+alias(
     name = "javax_inject",
-    exports = [
-        "@maven//:javax_inject_javax_inject",
-    ],
+    actual = "@maven//:javax_inject_javax_inject",
     visibility = ["//visibility:public"]
 )
 
@@ -19,9 +8,9 @@ java_plugin(
     name = "plugin",
     processor_class = "dagger.internal.codegen.ComponentProcessor",
     deps = [
-        ":compiler",
+        ":javax_inject",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:javax_inject_javax_inject",
+        "@maven//:com_google_dagger_dagger_compiler",
     ],
     visibility = ["//visibility:private"]
 )
@@ -30,9 +19,9 @@ java_library(
     name = "lib",
     exported_plugins = ["plugin"],
     exports = [
-        ":compiler",
+        ":javax_inject",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:javax_inject_javax_inject",
+        "@maven//:com_google_dagger_dagger_compiler",
     ],
     visibility = ["//visibility:public"]
 )

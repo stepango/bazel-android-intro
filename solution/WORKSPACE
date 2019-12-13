@@ -24,13 +24,14 @@ http_archive(
 )
 
 load("@rules_jvm_external//:defs.bzl", "maven_install")
+load("@rules_jvm_external//:specs.bzl", "maven")
 
 maven_install(
     artifacts = [
         "com.android.support:support-annotations:28.0.0",
         "io.reactivex.rxjava2:rxjava:2.2.15",
         "com.google.dagger:dagger:2.24",
-        "com.google.dagger:dagger-compiler:2.24",
+        maven.artifact("com.google.dagger", "dagger-compiler", "2.24", neverlink = True),
         "javax.inject:javax.inject:1",
     ],
     repositories = [
@@ -38,6 +39,7 @@ maven_install(
         "https://maven.google.com",
         "https://repo1.maven.org/maven2",
     ],
+    strict_visibility = True,
 )
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
