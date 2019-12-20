@@ -7,12 +7,23 @@ android_library(
     resource_files = glob(["res/**"]),
     deps = [
         "//mediarecorder/java/com/example/android/common/media",
-        "//mediarecorder/java/com/example/android/utils:android",
-        "//mediarecorder/java/com/example/android/utils:jvm",
-        "//mediarecorder/java/com/example/android/dagger:info",
+        "//mediarecorder/kotlin/com/example/android/utils:android",
+        "//mediarecorder/kotlin/com/example/android/utils:jvm",
+        "//mediarecorder/kotlin/com/example/android/dagger:info",
         "@maven//:com_android_support_support_annotations",
         "@maven//:io_reactivex_rxjava2_rxjava",
     ],
+)
+
+android_binary(
+    name = "mediarecorder_release",
+    manifest = "AndroidManifest.xml",
+    deps = [":main"],
+    crunch_png = True,
+    shrink_resources = 1,
+    proguard_specs = [
+        "proguard-rules.pro"
+    ]
 )
 
 android_binary(
@@ -20,8 +31,4 @@ android_binary(
     manifest = "AndroidManifest.xml",
     deps = [":main"],
     crunch_png = False,
-    shrink_resources = 1,
-    proguard_specs = [
-        "proguard-rules.pro"
-    ]
 )
