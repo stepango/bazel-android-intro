@@ -1,4 +1,4 @@
-load("@build_bazel_rules_android//android:rules.bzl", "android_binary", "android_library")
+load("@rules_android//android:rules.bzl", "android_binary", "android_library")
 
 config_setting(
     name = "debug",
@@ -19,9 +19,9 @@ alias(
     actual = select({
         "debug": "//mediarecorder/main/kotlin/com/example/android/keys",
         "release": "//mediarecorder/release/kotlin/com/example/android/keys",
-        "//conditions:default": "//mediarecorder/main/kotlin/com/example/android/keys"
+        "//conditions:default": "//mediarecorder/main/kotlin/com/example/android/keys",
     }),
-    visibility = ["//visibility:public"]
+    visibility = ["//visibility:public"],
 )
 
 android_library(
@@ -30,11 +30,11 @@ android_library(
     manifest = "AndroidManifest.xml",
     resource_files = glob(["res/**"]),
     deps = [
+        ":keys",
         "//mediarecorder/main/java/com/example/android/common/media",
+        "//mediarecorder/main/kotlin/com/example/android/dagger:info",
         "//mediarecorder/main/kotlin/com/example/android/utils:android",
         "//mediarecorder/main/kotlin/com/example/android/utils:jvm",
-        "//mediarecorder/main/kotlin/com/example/android/dagger:info",
-        ":keys",
         "@maven//:com_android_support_support_annotations",
         "@maven//:io_reactivex_rxjava2_rxjava",
     ],
@@ -42,18 +42,18 @@ android_library(
 
 android_binary(
     name = "mediarecorder_release",
-    manifest = "AndroidManifest.xml",
-    deps = [":main"],
     crunch_png = True,
-    shrink_resources = 1,
+    manifest = "AndroidManifest.xml",
     proguard_specs = [
-        "proguard-rules.pro"
-    ]
+        "proguard-rules.pro",
+    ],
+    shrink_resources = 1,
+    deps = [":main"],
 )
 
 android_binary(
     name = "mediarecorder",
+    crunch_png = False,
     manifest = "AndroidManifest.xml",
     deps = [":main"],
-    crunch_png = False,
 )

@@ -21,3 +21,4 @@
 /.sass-cache
 # Bazelisk version file
 .bazelversion
+/.aswb/.blaze/*
