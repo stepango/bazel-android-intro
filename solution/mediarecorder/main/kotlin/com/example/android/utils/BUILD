@@ -5,16 +5,16 @@ kt_jvm_library(
     srcs = glob([
         "jvm/*.kt",
     ]),
+    visibility = ["//mediarecorder:__subpackages__"],
     deps = [
         "@maven//:io_reactivex_rxjava2_rxjava",
     ],
-    visibility = ["//mediarecorder:__subpackages__"]
 )
 
 kt_android_library(
     name = "android",
     srcs = glob([
-        "android/*.kt"
+        "android/*.kt",
     ]),
-    visibility = ["//mediarecorder:__subpackages__"]
+    visibility = ["//mediarecorder:__subpackages__"],
 )

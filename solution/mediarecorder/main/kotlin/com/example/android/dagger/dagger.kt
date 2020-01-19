@@ -13,7 +13,7 @@ class Info @Inject constructor() {
 
 @Component
 interface AppComponent {
-    // You can name it anything, such as `poke()`. It doesn't have to be `inject()`
+
     fun inject(activity: InfoHolder)
 
     @Component.Factory

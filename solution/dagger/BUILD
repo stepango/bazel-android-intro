@@ -1,7 +1,7 @@
 alias(
     name = "javax_inject",
     actual = "@maven//:javax_inject_javax_inject",
-    visibility = ["//visibility:public"]
+    visibility = ["//visibility:public"],
 )
 
 java_plugin(
@@ -12,16 +12,15 @@ java_plugin(
         "@maven//:com_google_dagger_dagger",
         "@maven//:com_google_dagger_dagger_compiler",
     ],
-    visibility = ["//visibility:private"]
 )
 
 java_library(
     name = "lib",
     exported_plugins = ["plugin"],
+    visibility = ["//visibility:public"],
     exports = [
         ":javax_inject",
         "@maven//:com_google_dagger_dagger",
         "@maven//:com_google_dagger_dagger_compiler",
     ],
-    visibility = ["//visibility:public"]
 )

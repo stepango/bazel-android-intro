@@ -32,6 +32,7 @@ import android.widget.Button;
 import com.example.android.common.media.CameraHelper;
 import com.example.android.dagger.DaggerAppComponent;
 import com.example.android.dagger.InfoHolder;
+import com.example.android.keys.KeysKt;
 import com.example.android.utils.android.ContextKt;
 import com.example.android.utils.jvm.RxKt;
 import io.reactivex.Observable;
@@ -71,6 +72,7 @@ public class MainActivity extends Activity {
 
         Log.d("Kotlin test", ContextKt.localization(this).invoke(R.string.app_name));
         Log.d("Kotlin dagger test", infoHolder.info.getName());
+        Log.d("Build type key", KeysKt.getGoogle_maps_key());
 
         RxKt.plus(new CompositeDisposable(), Observable.just("").subscribe());
 
