@@ -1,0 +1,47 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="mediarecorder:mediarecorder" type="BlazeCommandRunConfigurationType" factoryName="Bazel Command" nameIsGenerated="true">
+    <blaze-settings blaze-native-debug="true" DEEP_LINK="" ACTIVITY_CLASS="" MODE="default_activity" launch-method="MOBILE_INSTALL" use-split-apks-if-possible="false" use-work-profile-if-present="false" show-logcat-automatically="false" handler-id="BlazeAndroidBinaryRunConfigurationHandlerProvider">
+      <blaze-target kind="android_binary">//mediarecorder/main/java/com/example/android/mediarecorder:mediarecorder</blaze-target>
+      <android-debugger-states>
+        <Auto>
+          <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+          <option name="SHOW_STATIC_VARS" value="true" />
+          <option name="WORKING_DIR" value="" />
+          <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+          <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+        </Auto>
+        <Native>
+          <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+          <option name="SHOW_STATIC_VARS" value="true" />
+          <option name="WORKING_DIR" value="" />
+          <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+          <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+        </Native>
+        <Java />
+        <Hybrid>
+          <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+          <option name="SHOW_STATIC_VARS" value="true" />
+          <option name="WORKING_DIR" value="" />
+          <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+          <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+        </Hybrid>
+        <Bazel>
+          <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+          <option name="SHOW_STATIC_VARS" value="true" />
+          <option name="WORKING_DIR" value="$PROJECT_DIR$/.." />
+          <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+          <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+        </Bazel>
+      </android-debugger-states>
+      <android-deploy-target-states>
+        <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+        <option name="PREFERRED_AVD" value="" />
+        <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+        <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      </android-deploy-target-states>
+    </blaze-settings>
+    <method v="2">
+      <option name="Blaze.BeforeRunTask" enabled="true" />
+    </method>
+  </configuration>
+</component>
