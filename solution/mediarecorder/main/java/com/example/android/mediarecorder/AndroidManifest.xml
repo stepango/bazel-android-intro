@@ -2,13 +2,7 @@
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           xmlns:tools="http://schemas.android.com/tools"
-          package="com.example.android.mediarecorder"
-          android:versionCode="1"
-          android:versionName="1.0">
-
-    <uses-sdk
-            android:minSdkVersion="16"
-            android:targetSdkVersion="29"/>
+          package="com.example.android.mediarecorder">
 
     <!-- This app records A/V content from camera and stores it to disk -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>

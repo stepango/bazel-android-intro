@@ -40,6 +40,13 @@ android_library(
     ],
 )
 
+MANIFEST_VALUES = {
+    "versionCode" : "1",
+    "versionName" : "1.0",
+    "minSdkVersion" : "21",
+    "targetSdkVersion" : "29",
+}
+
 android_binary(
     name = "mediarecorder_release",
     crunch_png = True,
@@ -49,6 +56,7 @@ android_binary(
     ],
     shrink_resources = 1,
     deps = [":main"],
+    manifest_values = MANIFEST_VALUES,
 )
 
 android_binary(
@@ -56,4 +64,5 @@ android_binary(
     crunch_png = False,
     manifest = "AndroidManifest.xml",
     deps = [":main"],
+    manifest_values = MANIFEST_VALUES,
 )

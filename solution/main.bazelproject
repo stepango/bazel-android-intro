@@ -7,7 +7,8 @@ directories:
 derive_targets_from_directories: true
 
 targets:
-  # If source code isn't resolving, add additional targets that compile it here
+  # Fix false positive error message
+  -mediarecorder/release/kotlin/com/example/android/keys
 
 workspace_type: android
 
@@ -22,8 +23,6 @@ additional_languages:
   java
   kotlin
 
-
-# Please uncomment an android-SDK platform. Available SDKs are:
 android_sdk_platform: android-29
 
 android_min_sdk: 21

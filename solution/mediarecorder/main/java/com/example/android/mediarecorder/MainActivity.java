@@ -16,6 +16,8 @@
 
 package com.example.android.mediarecorder;
 
+import android.Manifest;
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.app.Activity;
 import android.content.pm.PackageManager;
@@ -72,16 +74,18 @@ public class MainActivity extends Activity {
 
         Log.d("Kotlin test", ContextKt.localization(this).invoke(R.string.app_name));
         Log.d("Kotlin dagger test", infoHolder.info.getName());
-        Log.d("Build type key", KeysKt.getGoogle_maps_key());
+        Log.d("Build type key", KeysKt.google_maps_key);
 
         RxKt.plus(new CompositeDisposable(), Observable.just("").subscribe());
 
         mPreview = findViewById(R.id.surface_view);
         captureButton = findViewById(R.id.button_capture);
-        requestPermissions(new String[]{
-            android.Manifest.permission.CAMERA,
-            android.Manifest.permission.RECORD_AUDIO,
-            android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, PERMISSION_CODE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            requestPermissions(new String[]{
+                Manifest.permission.CAMERA,
+                Manifest.permission.RECORD_AUDIO,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE}, PERMISSION_CODE);
+        }
     }
 
     @Override
