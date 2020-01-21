@@ -7,6 +7,7 @@
 /.factorypath
 /.idea/
 /.ijwb/
+/.aswb/
 /.project
 /.settings
 /.vscode/
@@ -21,4 +22,3 @@
 /.sass-cache
 # Bazelisk version file
 .bazelversion
-/.aswb/.blaze/*
