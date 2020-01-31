@@ -1,20 +1,6 @@
 # Load the Android build rules
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
-http_archive(
-    name = "rules_android",
-    sha256 = "cd06d15dd8bb59926e4d65f9003bfc20f9da4b2519985c27e190cddc8b7a7806",
-    strip_prefix = "rules_android-0.1.1",
-    urls = ["https://github.com/bazelbuild/rules_android/archive/v0.1.1.zip"],
-)
-
-# Configure Android SDK
-load("@rules_android//android:rules.bzl", "android_sdk_repository")
-
-android_sdk_repository(
-    name = "androidsdk",
-)
-
 RULES_JVM_EXTERNAL_TAG = "3.0"
 
 RULES_JVM_EXTERNAL_SHA = "62133c125bf4109dfd9d2af64830208356ce4ef8b165a6ef15bbff7460b35c3a"
@@ -29,14 +15,18 @@ http_archive(
 load("@rules_jvm_external//:defs.bzl", "maven_install")
 load("@rules_jvm_external//:specs.bzl", "maven")
 
-DAGGER_VERSION = "2.25.4"
+DAGGER_VERSION = "2.26"
 
 maven_install(
     artifacts = [
+        "com.android.databinding:adapters:3.4.2",
+        "com.android.databinding:library:3.4.2",
+        "com.android.databinding:baseLibrary:3.4.2",
         "com.android.support:support-annotations:28.0.0",
         "io.reactivex.rxjava2:rxjava:2.2.15",
         "com.google.dagger:dagger:" + DAGGER_VERSION,
         "javax.inject:javax.inject:1",
+        "javax.annotation:jsr250-api:1.0",
         maven.artifact(
             "com.google.dagger",
             "dagger-compiler",
@@ -82,3 +72,14 @@ KOTLINC_RELEASE = {
 kotlin_repositories(compiler_release = KOTLINC_RELEASE)
 
 kt_register_toolchains()  # to use the default toolchain, otherwise see toolchains below
+
+#databindings
+
+bind(
+    name = "databinding_annotation_processor",
+    actual = "//tools/android:compiler_annotation_processor",
+)
+
+android_sdk_repository(
+    name = "androidsdk",
+)

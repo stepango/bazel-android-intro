@@ -1,5 +1,3 @@
-load("@rules_android//android:rules.bzl", "android_binary", "android_library")
-
 config_setting(
     name = "debug",
     values = {
@@ -21,7 +19,7 @@ alias(
         "release": "//mediarecorder/release/kotlin/com/example/android/keys",
         "//conditions:default": "//mediarecorder/main/kotlin/com/example/android/keys",
     }),
-    visibility = ["//visibility:public"],
+    visibility = ["//mediarecorder:__subpackages__"],
 )
 
 android_library(
@@ -29,40 +27,22 @@ android_library(
     srcs = ["MainActivity.java"],
     manifest = "AndroidManifest.xml",
     resource_files = glob(["res/**"]),
+    enable_data_binding = 1,
     deps = [
         ":keys",
         "//mediarecorder/main/java/com/example/android/common/media",
         "//mediarecorder/main/kotlin/com/example/android/dagger:info",
         "//mediarecorder/main/kotlin/com/example/android/utils:android",
         "//mediarecorder/main/kotlin/com/example/android/utils:jvm",
+        "//mediarecorder/main/java/com/example/android/view",
+        "//mediarecorder/main/java/com/example/android/vm",
+        "@maven//:javax_annotation_jsr250_api",
+        "@maven//:com_android_databinding_adapters",
+        "@maven//:com_android_databinding_library",
+        "@maven//:com_android_databinding_baseLibrary",
         "@maven//:com_android_support_support_annotations",
         "@maven//:io_reactivex_rxjava2_rxjava",
     ],
-)
-
-MANIFEST_VALUES = {
-    "versionCode" : "1",
-    "versionName" : "1.0",
-    "minSdkVersion" : "21",
-    "targetSdkVersion" : "29",
-}
-
-android_binary(
-    name = "mediarecorder_release",
-    crunch_png = True,
-    manifest = "AndroidManifest.xml",
-    proguard_specs = [
-        "proguard-rules.pro",
-    ],
-    shrink_resources = 1,
-    deps = [":main"],
-    manifest_values = MANIFEST_VALUES,
-)
-
-android_binary(
-    name = "mediarecorder",
-    crunch_png = False,
-    manifest = "AndroidManifest.xml",
-    deps = [":main"],
-    manifest_values = MANIFEST_VALUES,
+    visibility = ["//mediarecorder:__subpackages__"],
+    custom_package = "com.example.android.mediarecorder",
 )

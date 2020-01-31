@@ -17,6 +17,7 @@
 package com.example.android.mediarecorder;
 
 import android.Manifest;
+import android.databinding.DataBindingUtil;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.app.Activity;
@@ -29,6 +30,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.TextureView;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.android.common.media.CameraHelper;
@@ -37,6 +39,9 @@ import com.example.android.dagger.InfoHolder;
 import com.example.android.keys.KeysKt;
 import com.example.android.utils.android.ContextKt;
 import com.example.android.utils.jvm.RxKt;
+import com.example.android.view.databinding.FancyButtonBinding;
+import com.example.android.vm.MyViewModel;
+
 import io.reactivex.Observable;
 import io.reactivex.disposables.CompositeDisposable;
 
@@ -80,6 +85,9 @@ public class MainActivity extends Activity {
 
         mPreview = findViewById(R.id.surface_view);
         captureButton = findViewById(R.id.button_capture);
+
+        FancyButtonBinding binding = FancyButtonBinding.inflate(getLayoutInflater(), findViewById(R.id.root_layout), true);
+        binding.setVm(new MyViewModel("Hi"));
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             requestPermissions(new String[]{
                 Manifest.permission.CAMERA,

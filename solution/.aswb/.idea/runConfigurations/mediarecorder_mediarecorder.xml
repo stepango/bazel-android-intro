@@ -1,7 +1,7 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="mediarecorder:mediarecorder" type="BlazeCommandRunConfigurationType" factoryName="Bazel Command" nameIsGenerated="true">
-    <blaze-settings blaze-native-debug="true" DEEP_LINK="" ACTIVITY_CLASS="" MODE="default_activity" launch-method="MOBILE_INSTALL" use-split-apks-if-possible="false" use-work-profile-if-present="false" show-logcat-automatically="false" handler-id="BlazeAndroidBinaryRunConfigurationHandlerProvider">
-      <blaze-target kind="android_binary">//mediarecorder/main/java/com/example/android/mediarecorder:mediarecorder</blaze-target>
+  <configuration default="false" name="mediarecorder:mediarecorder" type="BlazeCommandRunConfigurationType" factoryName="Bazel Command">
+    <blaze-settings blaze-native-debug="true" DEEP_LINK="" ACTIVITY_CLASS="" MODE="default_activity" launch-method="MOBILE_INSTALL" use-split-apks-if-possible="false" use-work-profile-if-present="false" show-logcat-automatically="false" handler-id="BlazeAndroidBinaryRunConfigurationHandlerProvider" blaze-command="mobile-install">
+      <blaze-target kind="android_binary">//mediarecorder/app:app</blaze-target>
       <android-debugger-states>
         <Auto>
           <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
