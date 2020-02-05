@@ -1,5 +1,6 @@
 java_plugin(
     name = "compiler_annotation_processor",
+    generates_api = True,
     processor_class = "android.databinding.annotationprocessor.ProcessDataBinding",
     visibility = ["//visibility:public"],
     deps = [
