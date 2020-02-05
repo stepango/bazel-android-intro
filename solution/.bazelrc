@@ -6,3 +6,4 @@ build --incompatible_disable_depset_items
 build --android_databinding_use_v3_4_args
 build --experimental_android_databinding_v2
 build --override_repository=android_tools=/tmp/android_tools
+build --java_header_compilation=false
