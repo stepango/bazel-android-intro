@@ -22,7 +22,7 @@
             landscape. Landscape mode offers us more preview space with standard video aspect
             ratios (width > height) -->
         <activity
-                android:name=".MainActivity"
+                android:name="com.example.android.mediarecorder.MainActivity"
                 android:label="@string/app_name"
                 android:screenOrientation="landscape">
             <intent-filter>
