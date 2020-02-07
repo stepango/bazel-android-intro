@@ -2,7 +2,7 @@ android_library(
     name = "view",
     manifest = "AndroidManifest.xml",
     resource_files = glob(["res/**"]),
-    enable_data_binding = 1,
+    enable_data_binding = True,
     srcs = glob(["*.java"]),
     deps = [
         "//mediarecorder/main/java/com/example/android/vm",

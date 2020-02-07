@@ -18,7 +18,7 @@ APP_DEPS = [
 android_binary(
     name = "app_release",
     crunch_png = True,
-    enable_data_binding = 1,
+    enable_data_binding = True,
     manifest = "AndroidManifest.xml",
     manifest_values = MANIFEST_VALUES,
     proguard_specs = [
@@ -32,7 +32,7 @@ android_binary(
 android_binary(
     name = "app",
     crunch_png = False,
-    enable_data_binding = 1,
+    enable_data_binding = True,
     manifest = "AndroidManifest.xml",
     manifest_values = MANIFEST_VALUES,
     deps = APP_DEPS,

@@ -27,7 +27,7 @@ android_library(
     srcs = ["MainActivity.java"],
     manifest = "AndroidManifest.xml",
     resource_files = glob(["res/**"]),
-    enable_data_binding = 1,
+    enable_data_binding = True,
     deps = [
         ":keys",
         "//mediarecorder/main/java/com/example/android/common/media",
