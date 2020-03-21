@@ -8,9 +8,6 @@ MANIFEST_VALUES = {
 APP_DEPS = [
     "//mediarecorder/main/java/com/example/android/mediarecorder:main",
     "//mediarecorder/main/java/com/example/android/view",
-    "@maven//:com_android_databinding_adapters",
-    "@maven//:com_android_databinding_library",
-    "@maven//:com_android_databinding_baseLibrary",
     "@maven//:com_android_support_support_annotations",
     "@maven//:javax_annotation_jsr250_api",
 ]
@@ -18,7 +15,6 @@ APP_DEPS = [
 android_binary(
     name = "app_release",
     crunch_png = True,
-    enable_data_binding = True,
     manifest = "AndroidManifest.xml",
     manifest_values = MANIFEST_VALUES,
     proguard_specs = [
@@ -32,7 +28,6 @@ android_binary(
 android_binary(
     name = "app",
     crunch_png = False,
-    enable_data_binding = True,
     manifest = "AndroidManifest.xml",
     manifest_values = MANIFEST_VALUES,
     deps = APP_DEPS,

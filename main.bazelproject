@@ -23,10 +23,7 @@ additional_languages:
   java
   kotlin
 
-build_flags:
-  --android_databinding_use_v3_4_args
-  --experimental_android_databinding_v2
-  --override_repository=android_tools=/tmp/android_tools
+#build_flags:
 
 android_sdk_platform: android-29
 

@@ -27,7 +27,6 @@ android_library(
     srcs = ["MainActivity.java"],
     manifest = "AndroidManifest.xml",
     resource_files = glob(["res/**"]),
-    enable_data_binding = True,
     deps = [
         ":keys",
         "//mediarecorder/main/java/com/example/android/common/media",
@@ -37,9 +36,6 @@ android_library(
         "//mediarecorder/main/java/com/example/android/view",
         "//mediarecorder/main/java/com/example/android/vm",
         "@maven//:javax_annotation_jsr250_api",
-        "@maven//:com_android_databinding_adapters",
-        "@maven//:com_android_databinding_library",
-        "@maven//:com_android_databinding_baseLibrary",
         "@maven//:com_android_support_support_annotations",
         "@maven//:io_reactivex_rxjava2_rxjava",
     ],

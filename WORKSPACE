@@ -19,9 +19,6 @@ DAGGER_VERSION = "2.26"
 
 maven_install(
     artifacts = [
-        "com.android.databinding:adapters:3.4.2",
-        "com.android.databinding:library:3.4.2",
-        "com.android.databinding:baseLibrary:3.4.2",
         "com.android.support:support-annotations:28.0.0",
         "io.reactivex.rxjava2:rxjava:2.2.15",
         "com.google.dagger:dagger:" + DAGGER_VERSION,
@@ -42,11 +39,9 @@ maven_install(
     strict_visibility = True,
 )
 
-load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+RULES_KOTLIN_VERSION = "legacy-1.3.0"
 
-RULES_KOTLIN_VERSION = "legacy-1.3.0-rc4"
-
-RULES_KOTLIN_SHA = "fe32ced5273bcc2f9e41cea65a28a9184a77f3bc30fea8a5c47b3d3bfc801dff"
+RULES_KOTLIN_SHA = "4fd769fb0db5d3c6240df8a9500515775101964eebdf85a3f9f0511130885fde"
 
 http_archive(
     name = "io_bazel_rules_kotlin",
@@ -58,7 +53,7 @@ http_archive(
 
 load("@io_bazel_rules_kotlin//kotlin:kotlin.bzl", "kotlin_repositories", "kt_register_toolchains")
 
-KOTLIN_VERSION = "1.3.61"
+KOTLIN_VERSION = "1.3.70"
 
 KOTLINC_RELEASE_SHA = "3901151ad5d94798a268d1771c6c0b7e305a608c2889fc98a674802500597b1c"
 
@@ -72,13 +67,6 @@ KOTLINC_RELEASE = {
 kotlin_repositories(compiler_release = KOTLINC_RELEASE)
 
 kt_register_toolchains()  # to use the default toolchain, otherwise see toolchains below
-
-#databindings
-
-bind(
-    name = "databinding_annotation_processor",
-    actual = "//tools/android:compiler_annotation_processor",
-)
 
 android_sdk_repository(
     name = "androidsdk",
